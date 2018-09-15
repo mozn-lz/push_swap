@@ -49,6 +49,7 @@ void	ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
 
 void	get_cmd(t_stack_a *st_a, t_stack_b *st_b)
 {
+		ft_putstr("get_cmd(t_stack_a *st_a, t_stack_b *st_b)\n");
 	char	**cmd;
 
 	cmd = NULL;
@@ -61,6 +62,7 @@ void	get_cmd(t_stack_a *st_a, t_stack_b *st_b)
 
 void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 {
+		ft_putstr("init(t_stack_a *st_a, t_stack_b *st_b, char **tab)\n");
 	int i;
 
 	i = 0;
@@ -74,6 +76,7 @@ void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 
 void	store(int ac, char **av)
 {
+		ft_putstr("\n\n\n\nstore(int ac, char **av)\n");
 	char		**tab;
 	int			i;
 	int			j;
@@ -101,23 +104,27 @@ void	store(int ac, char **av)
 	free(st_b.data);
 }
 
-int		number_error(char **av, int ac)
+int		number_error(char	**av, int ac)
 {
+		ft_putstr("\t\tnumber_error(char **av, int ac)\n");
 	int		i;
 	int		j;
 
-	i = -1;
+	i = 0;
+				printf("ac %d\n", ac);
 	while (++i < ac)
 	{
 		j = -1;
+				printf("av[i]\t %s\n", av[i]);
 		while (av[i][++j] != '\0')
+				printf("av[i] %s\n", av[i]);
 			if (ft_isdigit(av[i][j]) == 0)
 			{
+				printf("tab>i %s\n", av[i]);
 				print_err("Invalid Argument\n");
-				ft_putstr(av[i]);
 				return (0);
 			}
-		if (ft_atoli(av[i]) < -2147483648 && ft_atoli(av[i]) > 2147483647)
+		if ((ft_atoli(av[i]) < -2147483648 && ft_atoli(av[i]) > 2147483647) && (ft_isdigit(av[i][0]) != 0))
 		{
 			print_err("Number is out of range\n");
 			return (0);
@@ -129,9 +136,28 @@ int		number_error(char **av, int ac)
 
 int		main(int ac, char **av)
 {
-	if (ac > 2)
+	char	**tab;
+	int		sz;
+
+	tab = NULL;
+	if (ac >= 2)
 	{
-		number_error(&av[1], ac);
+		if (ac == 2)
+		{
+				printf("____%d____\n", ac);
+			if (ft_strrchr(*av, '\t'))
+				tab = ft_strsplit(*av, '\t');
+			else if (ft_strrchr(*av, ' '))
+				tab = ft_strsplit(*av, ' ');
+			sz = (sizeof(tab) / sizeof(tab[0]));
+				printf("__SZ__%lu____%lu\n", sizeof(tab) , sizeof(tab[0]));
+			number_error(tab, sz);
+		}
+		else if (ac > 2)
+		{
+			tab = av;
+			number_error(tab, ac - 1);
+		}
 	}
 	return (0);
 }
