@@ -37,5 +37,8 @@ void			fn_rrb(t_stack_b *st_b);
 void			fn_rrr(t_stack_a *st_a, t_stack_b *st_b);
 void			fn_pa(t_stack_a *st_a, t_stack_b *st_b);
 void			fn_pb(t_stack_a *st_a, t_stack_b *st_b);
+void			print_err(char *err);
+char			**err_ctrl(int ac, char **av);
+int				number_error(char **av, t_stack_a *st_a);
 
 #endif

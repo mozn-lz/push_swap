@@ -11,7 +11,11 @@
 # **************************************************************************** #
 
 NAME = checker
-SRC =	src/checker.c src/rotate_push.c src/rr.c src/swap.c 
+SRC =	src/checker.c \
+		src/check_errors.c \
+		src/rotate_push.c \
+		src/rr.c \
+		src/swap.c 
 
 INCLUDES = libft/libft.a
 
