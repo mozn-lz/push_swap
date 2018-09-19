@@ -174,6 +174,7 @@ int		main(int ac, char **av)
 				free(av[1]);
 		}
 	}
+	(!tab) ? 1: free(tab);
 	free(st_a.data);
 	free(st_b.data);
 	return (0);

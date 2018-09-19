@@ -11,17 +11,25 @@
 # **************************************************************************** #
 
 NAME = checker
-SRC =	src/checker.c \
+NAME2 = push_swap
+C_SRC =	src/checker.c \
 		src/check_errors.c \
 		src/rotate_push.c \
 		src/rr.c \
-		src/swap.c 
+		src/swap.c
+
+P_SRC =	src/swap.c \
+		src/check_errors.c \
+		src/rotate_push.c \
+		src/rr.c \
+		src/swap.c
 
 INCLUDES = libft/libft.a
 
 $(NAME):
 	@make -C libft
-	@gcc -Wall -Werror -Wextra $(SRC) $(INCLUDES) -o $(NAME)
+	@gcc -Wall -Werror -Wextra $(C_SRC) $(INCLUDES) -o $(NAME)
+	@gcc -Wall -Werror -Wextra $(P_SRC) $(INCLUDES) -o $(NAME2)
 	@echo "$(NAME) created Successfully!"
 
 all: $(NAME)
