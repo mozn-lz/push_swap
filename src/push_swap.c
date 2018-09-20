@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-/*
-void	print_err(char *err)
-{
-	fprintf(stderr, "Error: %s\n", err);
-	fflush(stderr);
-}
-
 
 int		ft_checker(t_stack_a *st_a, t_stack_b *st_b)
 {
@@ -101,22 +94,16 @@ int		ft_stack_checker(t_stack_a *st_a, t_stack_b *st_b)
 
 char	*algo1(t_stack_a *st_a, t_stack_b *st_b)
 {
+		ft_putstr("*algo1\n");
 	char	*process;
 
 	process = NULL;
-
 	if (st_a->data[0] > st_a->data[0 + 1])
-	{
 		fn_sa(st_a);
-	}
 	else if (st_a->data[0] > st_a->data[st_a->top])
-	{
 		fn_rra(st_a);
-	}
 	else if (st_a->data[0] < st_a->data[st_a->top])
-	{
 		fn_ra(st_a);
-	}
 	else if (st_a->data[0] < st_a->data[st_a->top] && st_a->data[0 + 1] > st_a->data[st_a->top])
 	{
 		fn_ra(st_a);
@@ -139,9 +126,7 @@ char	*algo1(t_stack_a *st_a, t_stack_b *st_b)
 				ft_putstr("step(s) done above && continue\n");
 		}
 		else if (ft_checker(st_a, st_b) == 1)
-		{
 			ft_putstr("step(s) done above && stop\n");
-		}
 	}
 	return (process);
 }
@@ -178,19 +163,17 @@ int		main(int ac, char **av)
 	{
 		tab = err_ctrl(ac, av);
 		init(&st_a, &st_b, tab);
+		ft_putstr("A\n");
 		if (number_error(tab, &st_a) != 0)
 		{
-//			my_ps_ai(&st_a, &st_b);
+			my_ps_ai(&st_a, &st_b);
+		ft_putstr("M\n");
 		}
 	}
-	// free(tab);
+	fn_print_stack(&st_a, &st_b);
+	ft_putstr("Z\n");
+	(!tab) ? 1: free(tab);
 	free(st_a.data);
 	free(st_b.data);
-	return (0);
-}
-*/
-int main(void)
-{
-	ft_putstr("A\n");
 	return (0);
 }
