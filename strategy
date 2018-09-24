@@ -42,4 +42,11 @@ a0 > aLS     => rra
 
 a0<a1 & aLS > a0 => pb
 a sorted & b->top !=-1 => pa
+
+
+if (a0 > a1) sa
+if (a0 < aLS) ra
+if (a0 > aLS) rra
+if (a0<a1 & aLS > a0) pb
+if (a sorted & b->top !=-1) pa
  

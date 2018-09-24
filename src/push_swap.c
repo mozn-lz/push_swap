@@ -64,80 +64,19 @@ void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
 	ft_putstr("\n");
 }
 
-int		ft_stack_checker(t_stack_a *st_a, t_stack_b *st_b)
-{
-	int i;
-
-	i = 0;
-	if (st_a->top != -1)
-	{
-		i = st_a->top;
-		while(i >= 0)
-		{
-			if (i < st_a->data[i - 1])
-				return (0);
-			i--;
-		}
-	}
-	if (st_b->top != -1)
-	{
-		i = st_a->top;
-		while(i >= 0)
-		{
-			if (i > st_b->data[i - 1])
-				return (0);
-			i--;
-		}
-	}
-	return (1);
-}
-
-char	*algo1(t_stack_a *st_a, t_stack_b *st_b)
-{
-		ft_putstr("*algo1\n");
-	char	*process;
-
-	process = NULL;
-	if (st_a->data[0] > st_a->data[0 + 1])
-		fn_sa(st_a);
-	else if (st_a->data[0] > st_a->data[st_a->top])
-		fn_rra(st_a);
-	else if (st_a->data[0] < st_a->data[st_a->top])
-		fn_ra(st_a);
-	else if (st_a->data[0] < st_a->data[st_a->top] && st_a->data[0 + 1] > st_a->data[st_a->top])
-	{
-		fn_ra(st_a);
-		fn_sa(st_a);
-	}
-	else if (ft_stack_checker(st_a, st_b) != 1)
-	{
-		fn_pb(st_a, st_b);
-		algo1(st_a, st_b);
-	}
-	else
-	{
-		if (ft_checker(st_a, st_b) != 1 && st_b->top >-1)
-		{
-			fn_pb(st_a, st_b);
-			algo1(st_a, st_b);
-			if (ft_checker(st_a, st_b) == 1)
-				ft_putstr("step(s) done above && stop\n");
-			else
-				ft_putstr("step(s) done above && continue\n");
-		}
-		else if (ft_checker(st_a, st_b) == 1)
-			ft_putstr("step(s) done above && stop\n");
-	}
-	return (process);
-}
-
 char	*my_ps_ai(t_stack_a *st_a, t_stack_b *st_b)
 {
-	char	*prc;
-
-	prc = algo1(st_a, st_b);
-	return(prc);
+	char	*cmds;
+	int		i;
+// ft_putstr("D\n");
+	i = -1;
+	cmds = NULL;
+	cmds = (char*)malloc(sizeof(char*) * 100);
+	while (ft_checker(st_a, st_b) != 1) 
+		algo2(st_a, st_b, cmds, i);
+	return(cmds);
 }
+
 void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 {
 	int i;
@@ -151,7 +90,6 @@ void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 	st_b->data = (int*)malloc(sizeof(int) * i);
 }
 
-
 int		main(int ac, char **av)
 {
 	char		**tab;
@@ -163,16 +101,17 @@ int		main(int ac, char **av)
 	{
 		tab = err_ctrl(ac, av);
 		init(&st_a, &st_b, tab);
-		ft_putstr("A\n");
+		// ft_putstr("A\n");
 		if (number_error(tab, &st_a) != 0)
 		{
+		if (ft_checker(&st_a, &st_b) != 1)
 			my_ps_ai(&st_a, &st_b);
-		ft_putstr("M\n");
+		// ft_putstr("M\n");
 		}
 	}
 	fn_print_stack(&st_a, &st_b);
 	ft_putstr("Z\n");
-	(!tab) ? 1: free(tab);
+	// (!tab) ? 1: free(tab);
 	free(st_a.data);
 	free(st_b.data);
 	return (0);

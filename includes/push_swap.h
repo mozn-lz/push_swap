@@ -40,5 +40,8 @@ void			fn_pb(t_stack_a *st_a, t_stack_b *st_b);
 void			print_err(char *err);
 char			**err_ctrl(int ac, char **av);
 int				number_error(char **av, t_stack_a *st_a);
+void			algo2(t_stack_a *st_a, t_stack_b *st_b,  char *cmd, int i);
+int				ft_checker(t_stack_a *st_a, t_stack_b *st_b);
+void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b);
 
 #endif
