@@ -89,7 +89,7 @@ char	**err_ctrl(int ac, char **av)
 	char	**tab;
 	int		i;
 
-	printf("!: \tav: %s, av: %d\n", av[1], ac);
+	i = 0;
 	tab = NULL;
 	if (ac == 2)
 	{
@@ -99,14 +99,14 @@ char	**err_ctrl(int ac, char **av)
 			tab = ft_strsplit(av[1], ' ');
 		else
 		{
-			tab[1] = ft_strdup(av[1]);
+			tab = av + 1;
+			while (++i < ac)
+				tab[i - 1] = av[i];
 		}
-		printf("!: \tav: %s, av: %d\n", tab[1], ac);
 	}
 	else if (ac > 2)
 	{
 		tab = av + 1;
-		i = 0;
 		while (++i < ac)
 			tab[i - 1] = av[i];
 	}

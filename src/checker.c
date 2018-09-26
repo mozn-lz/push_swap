@@ -45,19 +45,15 @@ int		ft_checker(t_stack_a *st_a, t_stack_b *st_b)
 	{
 		while (i > -1)
 		{
+			if (i - 1 == -1)
+				break ;
 			if (st_a->data[i] > st_a->data[i - 1])
 				break ;
 			i--;
 		}
 		if (i <= 0)
 		{
-			ft_putstr("OK\n");
 			return (1);
-		}
-		else
-		{
-			ft_putstr("KO\n");
-			return (0);
 		}
 	}
 	return (0);
@@ -90,8 +86,6 @@ void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
 
 void	ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
 {
-		ft_putstr("intercept\n");
-	// fn_print_stack(st_a, st_b);
 	if (ft_strcmp(cmd, "rra") == 0)
 		fn_rra(st_a);
 	else if (ft_strcmp(cmd, "rrb") == 0)
@@ -168,14 +162,18 @@ int		main(int ac, char **av)
 					fn_print_stack(&st_a, &st_b);
 					ft_intercept(&st_a, &st_b, av[1]);
 					if (ft_checker(&st_a, &st_b) == 1)
+					{
+						ft_putstr("OK\n");
 						break ;
+					}
+					else
+						ft_putstr("KO\n");
 					fn_print_stack(&st_a, &st_b);
+					// free(tab);
 				}
-				free(av[1]);
 		}
+		(st_a.data) ? free(st_a.data) : 1;
+		(st_b.data) ? free(st_b.data) : 1;
 	}
-	(!tab) ? 1: free(tab);
-	free(st_a.data);
-	free(st_b.data);
 	return (0);
 }
