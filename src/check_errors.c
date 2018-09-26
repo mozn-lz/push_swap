@@ -69,7 +69,6 @@ int		number_error(char **av, t_stack_a *st_a)
 		while (av[i][++j] != '\0')
 			if (ft_isdigit(av[i][j]) == 0)
 			{
-				printf("tab[i][j] %s\n", av[i]);
 				print_err("Argument is not a number\n");
 				return 0;
 			}
