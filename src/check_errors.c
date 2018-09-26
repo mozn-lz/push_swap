@@ -63,6 +63,7 @@ int		number_error(char **av, t_stack_a *st_a)
 	int		j;
 
 	i = -1;
+		ft_putstr("\n");
 	while (++i < st_a->top + 1)
 	{
 		j = -1;
@@ -70,12 +71,12 @@ int		number_error(char **av, t_stack_a *st_a)
 			if (ft_isdigit(av[i][j]) == 0)
 			{
 				print_err("Argument is not a number\n");
-				return 0;
+				return (0);
 			}
-		if (ft_atoli(av[i]) < -2147483648 && ft_atoli(av[i]) > 2147483647)
+		if (ft_atoli(av[i]) < 0 || ft_atoli(av[i]) > 2147483647)
 		{
 			print_err("Number is out of range\n");
-			return 0;
+			return (0);
 		}
 	}
 	if (store(av, st_a) == 0)
@@ -84,10 +85,11 @@ int		number_error(char **av, t_stack_a *st_a)
 }
 
 char	**err_ctrl(int ac, char **av)
-{ 
+{
 	char	**tab;
 	int		i;
 
+	printf("!: \tav: %s, av: %d\n", av[1], ac);
 	tab = NULL;
 	if (ac == 2)
 	{
@@ -95,6 +97,11 @@ char	**err_ctrl(int ac, char **av)
 			tab = ft_strsplit(av[1], '\t');
 		else if (ft_strchr(av[1], ' ') != NULL)
 			tab = ft_strsplit(av[1], ' ');
+		else
+		{
+			tab[1] = ft_strdup(av[1]);
+		}
+		printf("!: \tav: %s, av: %d\n", tab[1], ac);
 	}
 	else if (ac > 2)
 	{
@@ -102,7 +109,6 @@ char	**err_ctrl(int ac, char **av)
 		i = 0;
 		while (++i < ac)
 			tab[i - 1] = av[i];
-			// printf("%d- tab[%s]\n", i, tab[i-1]);
 	}
 	return (tab);
 }
