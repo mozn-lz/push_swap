@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 19:30:46 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/14 15:41:02 by msefako          ###   ########.fr       */
+/*   Updated: 2019/08/29 22:30:45 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_err(char *err)
 {
-	fprintf(stderr, "Error: %s\n", err);
+	fprintf(stderr, "Error: %s", err);
 	fflush(stderr);
 }
 
@@ -63,7 +63,7 @@ int		number_error(char **av, t_stack_a *st_a)
 	int		j;
 
 	i = -1;
-		ft_putstr("\n");
+		// ft_putstr("\n");
 	while (++i < st_a->top + 1)
 	{
 		j = -1;

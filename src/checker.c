@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 19:30:46 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/14 15:41:02 by msefako          ###   ########.fr       */
+/*   Updated: 2019/08/30 04:26:19 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_put_char_arr(char **tab)
+void ft_put_char_arr(char **tab)
 {
 	int i;
 
@@ -24,7 +24,7 @@ void	ft_put_char_arr(char **tab)
 	}
 }
 
-void	ft_put_int_arr(int *tab)
+void ft_put_int_arr(int *tab)
 {
 	int i;
 
@@ -36,7 +36,7 @@ void	ft_put_int_arr(int *tab)
 	}
 }
 
-int		ft_checker(t_stack_a *st_a, t_stack_b *st_b)
+int ft_checker(t_stack_a *st_a, t_stack_b *st_b)
 {
 	int i;
 
@@ -46,9 +46,9 @@ int		ft_checker(t_stack_a *st_a, t_stack_b *st_b)
 		while (i > -1)
 		{
 			if (i - 1 == -1)
-				break ;
+				break;
 			if (st_a->data[i] > st_a->data[i - 1])
-				break ;
+				break;
 			i--;
 		}
 		if (i <= 0)
@@ -59,7 +59,7 @@ int		ft_checker(t_stack_a *st_a, t_stack_b *st_b)
 	return (0);
 }
 
-void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
+void fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
 {
 	int i;
 
@@ -84,7 +84,7 @@ void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
 	ft_putstr("\n");
 }
 
-void	ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
+void ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
 {
 	if (ft_strcmp(cmd, "rra") == 0)
 		fn_rra(st_a);
@@ -109,27 +109,27 @@ void	ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
 	else if (ft_strcmp(cmd, "ss") == 0)
 		fn_ss(st_a, st_b);
 	else
-		print_err("Invalid Instruction");
+		print_err("Invalid Instruction\n");
 }
 
-void	get_cmd(t_stack_a *st_a, t_stack_b *st_b)
-{
-	char	**cmd;
+// void get_cmd(t_stack_a *st_a, t_stack_b *st_b)
+// {
+// 	char **cmd;
 
-		ft_putstr("\t\tGET	CMD\n$> ");
-	cmd = NULL;
-	while (get_next_line(1, cmd))
-	{
-		ft_putstr("enter comand\n$>");
-		fprintf(stderr, "Err %s\n", *cmd);
-		ft_putstr(*cmd);
-		ft_putstr("\n");
-		ft_intercept(st_a, st_b, *cmd);
-	}
-	free(cmd);
-}
+// 	ft_putstr("\t\tGET	CMD\n$> ");
+// 	cmd = NULL;
+// 	while (get_next_line(1, cmd))
+// 	{
+// 		ft_putstr("enter comand\n$>");
+// 		fprintf(stderr, "Err %s\n", *cmd);
+// 		ft_putstr(*cmd);
+// 		ft_putstr("\n");
+// 		ft_intercept(st_a, st_b, *cmd);
+// 	}
+// 	free(cmd);
+// }
 
-void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
+void init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 {
 	int i;
 
@@ -138,15 +138,16 @@ void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 		i++;
 	st_a->top = i - 1;
 	st_b->top = -1;
-	st_a->data = (int*)malloc(sizeof(int) * i);
-	st_b->data = (int*)malloc(sizeof(int) * i);
+	st_a->data = (int *)malloc(sizeof(int) * i);
+	st_b->data = (int *)malloc(sizeof(int) * i);
 }
 
-int		main(int ac, char **av)
-{ 
-	char		**tab;
-	t_stack_a	st_a;
-	t_stack_b	st_b;
+int main(int ac, char **av)
+{
+	char **tab;
+	char *cmd;
+	t_stack_a st_a;
+	t_stack_b st_b;
 
 	tab = NULL;
 	if (ac >= 2)
@@ -155,22 +156,15 @@ int		main(int ac, char **av)
 		init(&st_a, &st_b, tab);
 		if (number_error(tab, &st_a) != 0)
 		{
-					fn_print_stack(&st_a, &st_b);
-			if (ft_checker(&st_a, &st_b) == 0)
-				while (get_next_line(1, &av[1]))
-				{
-					fn_print_stack(&st_a, &st_b);
-					ft_intercept(&st_a, &st_b, av[1]);
-					if (ft_checker(&st_a, &st_b) == 1)
-					{
-						ft_putstr("OK\n");
-						break ;
-					}
-					else
-						ft_putstr("KO\n");
-					fn_print_stack(&st_a, &st_b);
-					// free(tab);
-				}
+			cmd = NULL;
+				// fn_print_stack(&st_a, &st_b);
+			while (get_next_line(0, &cmd) > 0)		//	get/read commads
+			{
+				// ft_putstr("intercepting\n");
+				ft_intercept(&st_a, &st_b, cmd);		//	interprete commands
+				// fn_print_stack(&st_a, &st_b);
+			}
+			(ft_checker(&st_a, &st_b) == 1) ? ft_putstr("OK\n") : ft_putstr("KO\n");
 		}
 		(st_a.data) ? free(st_a.data) : 1;
 		(st_b.data) ? free(st_b.data) : 1;

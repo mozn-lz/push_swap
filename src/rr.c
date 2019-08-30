@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:09:39 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/10 17:09:42 by msefako          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:12:34 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	fn_rra(t_stack_a *st_a)
+void	fn_ra(t_stack_a *st_a)
 {
 	int	tmp;
 	int	fst;
@@ -31,7 +31,7 @@ void	fn_rra(t_stack_a *st_a)
 	st_a->data[0] = fst;
 }
 
-void	fn_rrb(t_stack_b *st_b)
+void	fn_rb(t_stack_b *st_b)
 {
 	int	tmp;
 	int	fst;
@@ -50,8 +50,8 @@ void	fn_rrb(t_stack_b *st_b)
 	st_b->data[0] = fst;
 }
 
-void	fn_rrr(t_stack_a *st_a, t_stack_b *st_b)
+void	fn_rr(t_stack_a *st_a, t_stack_b *st_b)
 {
-	fn_rra(st_a);
-	fn_rrb(st_b);
+	fn_ra(st_a);
+	fn_rb(st_b);
 }

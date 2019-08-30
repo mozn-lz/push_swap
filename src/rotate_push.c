@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 17:09:47 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/12 11:04:23 by msefako          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:12:11 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	fn_ra(t_stack_a *st_a)
+void	fn_rra(t_stack_a *st_a)
 {
 	int	tmp;
 	int	fst;
@@ -31,7 +31,7 @@ void	fn_ra(t_stack_a *st_a)
 	st_a->data[st_a->top] = fst;
 }
 
-void	fn_rb(t_stack_b *st_b)
+void	fn_rrb(t_stack_b *st_b)
 {
 	int	tmp;
 	int	fst;
@@ -50,10 +50,10 @@ void	fn_rb(t_stack_b *st_b)
 	st_b->data[st_b->top] = fst;
 }
 
-void	fn_rr(t_stack_a *st_a, t_stack_b *st_b)
+void	fn_rrr(t_stack_a *st_a, t_stack_b *st_b)
 {
-	fn_ra(st_a);
-	fn_rb(st_b);
+	fn_rra(st_a);
+	fn_rrb(st_b);
 }
 
 void	fn_pa(t_stack_a *st_a, t_stack_b *st_b)

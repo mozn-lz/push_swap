@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msefako <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/02 14:56:42 by msefako           #+#    #+#              #
-#    Updated: 2018/08/28 16:12:28 by msefako          ###   ########.fr        #
+#    Updated: 2019/08/29 22:05:30 by mozn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,3 @@ fclean: clean
 	@echo "rule 'fclean' finished successfully"
 
 re: fclean all
-	@rm -rf libft/$(NAME)
-	@rm -f $(NAME)
-	@rm -rf libft/$(NAME2)
-	@rm -f $(NAME2)

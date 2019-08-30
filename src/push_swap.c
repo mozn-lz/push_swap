@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 07:15:48 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/19 07:15:54 by msefako          ###   ########.fr       */
+/*   Updated: 2019/08/30 03:55:46 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,15 @@ int		main(int ac, char **av)
 		init(&st_a, &st_b, tab);
 		if (number_error(tab, &st_a) != 0)
 		{
-			fn_print_stack(&st_a, &st_b);
+			// fn_print_stack(&st_a, &st_b);
 			if (ft_checker(&st_a, &st_b) == 0)
+			{
 				my_ps_ai(&st_a, &st_b);
-	fn_print_stack(&st_a, &st_b);
-	// (!tab) ? 1: free(tab);
-	free(st_a.data);
-	free(st_b.data);
+			}
+			// fn_print_stack(&st_a, &st_b);
+			// (!tab) ? 1: free(tab);
+			free(st_a.data);
+			free(st_b.data);
 		}
 	}
 	return (0);
