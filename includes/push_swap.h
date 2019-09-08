@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 18:16:25 by msefako           #+#    #+#             */
-/*   Updated: 2018/09/01 20:26:11 by msefako          ###   ########.fr       */
+/*   Updated: 2019/09/08 23:29:27 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			fn_pb(t_stack_a *st_a, t_stack_b *st_b);
 void			print_err(char *err);
 char			**err_ctrl(int ac, char **av);
 int				number_error(char **av, t_stack_a *st_a);
-void			algo2(t_stack_a *st_a, t_stack_b *st_b,  char *cmd, int i);
+void			algo2(t_stack_a *st_a, t_stack_b *st_b);
 int				ft_checker(t_stack_a *st_a, t_stack_b *st_b);
 void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b);
 

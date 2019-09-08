@@ -51,30 +51,36 @@ int		ft_stack_checker(t_stack_a *st_a, t_stack_b *st_b)
 	return (1);
 }
 
-void	algo2(t_stack_a *s_a, t_stack_b *s_b,  char *cmd, int i)
+void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 {
 	if ((s_a->top > -1) && (ft_checker(s_a, s_b) == 0))
 	{
+		if (s_a->data[s_a->top - 1] > s_a->data[0] && s_a->data[s_a->top] < s_a->data[s_a->top - 1])
+		{
+			ft_putnbr(++cout);
+			ft_putstr("+sa\n");
+			fn_sa(s_a);
+			ft_putnbr(++cout);
+			ft_putstr("+ra\n");
+			fn_ra(s_a);
+		}
 		if (s_a->data[s_a->top - 1] < s_a->data[s_a->top])
 		{
 				ft_putnbr(++cout);
 			ft_putstr("sa\n");
 			fn_sa(s_a);
-			cmd[++i] = *ft_strdup("sa\n");
 		}
 		else if (s_a->data[0] < s_a->data[s_a->top])
 		{
 				ft_putnbr(++cout);
 			ft_putstr("rra\n");
 			fn_rra(s_a);
-			cmd[++i] = *ft_strdup("rra\n");
 		}
 		else if ((ft_check_a(s_a) == 0) && (s_a->top > -1))
 		{
 				ft_putnbr(++cout);
 			ft_putstr("pb\n");
 			fn_pb(s_a, s_b);
-			cmd[++i] = *ft_strdup("pb\n");
 		}
 
 		if (s_b->top > -1)
@@ -84,21 +90,19 @@ void	algo2(t_stack_a *s_a, t_stack_b *s_b,  char *cmd, int i)
 				ft_putnbr(++cout);
 				ft_putstr("sb\n");
 				fn_sb(s_b);
-				cmd[++i] = *ft_strdup("sb\n");
 			}
 			else if (s_b->data[0] > s_b->data[s_b->top])
 			{
 				ft_putnbr(++cout);
 				ft_putstr("rrb\n");
 				fn_rrb(s_b);
-				cmd[++i] = *ft_strdup("rrb\n");
+				// cmd[++i] = *ft_strdup("rrb\n");
 			}
 			else if (ft_check_a(s_a) == 1)
 			{
 				ft_putnbr(++cout);
 				ft_putstr("pa\n");
 				fn_pa(s_a, s_b);
-				cmd[++i] = *ft_strdup("pa\n");
 			}
 		}
 	}

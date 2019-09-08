@@ -6,7 +6,7 @@
 /*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 07:15:48 by msefako           #+#    #+#             */
-/*   Updated: 2019/08/30 03:55:46 by mozn             ###   ########.fr       */
+/*   Updated: 2019/09/08 23:22:40 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	fn_print_stack(t_stack_a *st_a, t_stack_b *st_b)
 
 char	*my_ps_ai(t_stack_a *st_a, t_stack_b *st_b)
 {
-	char	*cmds;
-	int		i;
+	// char	*cmds;
+	// int		i;
 
-	i = -1;
-	cmds = NULL;
-	cmds = (char*)malloc(sizeof(char*) * 100);
+	// i = -1;
+	// cmds = NULL;
+	// cmds = (char*)malloc(sizeof(char*) * 100);
 	while (ft_checker(st_a, st_b) == 0) 
-		algo2(st_a, st_b, cmds, i);
-	return(cmds);
+		algo2(st_a, st_b);
+	return(NULL);
 }
 
 void	init(t_stack_a *st_a, t_stack_b *st_b, char **tab)

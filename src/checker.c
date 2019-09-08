@@ -6,7 +6,7 @@
 /*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 19:30:46 by msefako           #+#    #+#             */
-/*   Updated: 2019/08/30 04:26:19 by mozn             ###   ########.fr       */
+/*   Updated: 2019/09/02 15:20:54 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,23 +112,6 @@ void ft_intercept(t_stack_a *st_a, t_stack_b *st_b, char *cmd)
 		print_err("Invalid Instruction\n");
 }
 
-// void get_cmd(t_stack_a *st_a, t_stack_b *st_b)
-// {
-// 	char **cmd;
-
-// 	ft_putstr("\t\tGET	CMD\n$> ");
-// 	cmd = NULL;
-// 	while (get_next_line(1, cmd))
-// 	{
-// 		ft_putstr("enter comand\n$>");
-// 		fprintf(stderr, "Err %s\n", *cmd);
-// 		ft_putstr(*cmd);
-// 		ft_putstr("\n");
-// 		ft_intercept(st_a, st_b, *cmd);
-// 	}
-// 	free(cmd);
-// }
-
 void init(t_stack_a *st_a, t_stack_b *st_b, char **tab)
 {
 	int i;
@@ -157,10 +140,8 @@ int main(int ac, char **av)
 		if (number_error(tab, &st_a) != 0)
 		{
 			cmd = NULL;
-				// fn_print_stack(&st_a, &st_b);
 			while (get_next_line(0, &cmd) > 0)		//	get/read commads
 			{
-				// ft_putstr("intercepting\n");
 				ft_intercept(&st_a, &st_b, cmd);		//	interprete commands
 				// fn_print_stack(&st_a, &st_b);
 			}

@@ -6,7 +6,7 @@
 /*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/01 19:30:46 by msefako           #+#    #+#             */
-/*   Updated: 2019/08/29 22:30:45 by mozn             ###   ########.fr       */
+/*   Updated: 2019/09/02 16:19:04 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,15 @@ int		number_error(char **av, t_stack_a *st_a)
 	{
 		j = -1;
 		while (av[i][++j] != '\0')
-			if (ft_isdigit(av[i][j]) == 0)
+			if (atoi(av[i]) == 0 && av[i][j] != '0')
 			{
 				print_err("Argument is not a number\n");
 				return (0);
 			}
-		if (ft_atoli(av[i]) < 0 || ft_atoli(av[i]) > 2147483647)
+		if (ft_atoli(av[i]) > 2147483647 && ft_atoli(av[i]) < -2147483648)
 		{
-			print_err("Number is out of range\n");
+			printf("%ld is out of range\n", ft_atoli(av[i]));
+			print_err("Number is out of range \n");
 			return (0);
 		}
 	}
