@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algos.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/09 22:43:59 by msefako           #+#    #+#             */
+/*   Updated: 2019/09/09 22:44:04 by msefako          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 	int cout = 0;	
@@ -55,18 +67,18 @@ void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 {
 	if ((s_a->top > -1) && (ft_checker(s_a, s_b) == 0))
 	{
-		if (s_a->data[s_a->top - 1] > s_a->data[0] && s_a->data[s_a->top] < s_a->data[s_a->top - 1])
+		if (s_a->data[s_a->top - 1] > s_a->data[0] && s_a->data[s_a->top] < s_a->data[s_a->top - 1] && (s_a->top + s_b->top > 10))
 		{
 			ft_putnbr(++cout);
-			ft_putstr("+sa\n");
+			ft_putstr("sa\n");
 			fn_sa(s_a);
 			ft_putnbr(++cout);
-			ft_putstr("+ra\n");
+			ft_putstr("ra\n");
 			fn_ra(s_a);
 		}
 		if (s_a->data[s_a->top - 1] < s_a->data[s_a->top])
 		{
-				ft_putnbr(++cout);
+			ft_putnbr(++cout);
 			ft_putstr("sa\n");
 			fn_sa(s_a);
 		}
@@ -78,15 +90,25 @@ void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 		}
 		else if ((ft_check_a(s_a) == 0) && (s_a->top > -1))
 		{
-				ft_putnbr(++cout);
+			ft_putnbr(++cout);
 			ft_putstr("pb\n");
 			fn_pb(s_a, s_b);
 		}
 
 		if (s_b->top > -1)
 		{
-			if (s_b->data[s_b->top - 1] > s_b->data[s_b->top])
+			if (s_b->data[s_b->top - 1] < s_b->data[0] && s_b->data[s_b->top] > s_b->data[s_b->top - 1])
 			{
+				ft_putnbr(++cout);
+				ft_putstr("sb\n");
+				fn_sb(s_b);
+				ft_putnbr(++cout);
+				ft_putstr("rb\n");
+				fn_rb(s_b);
+			}
+			if (s_b->data[s_b->top - 1] > s_b->data[s_b->top] && s_b->data[s_a->top] > 0)
+			{
+				ft_putnbr(s_b->data[s_a->top]);
 				ft_putnbr(++cout);
 				ft_putstr("sb\n");
 				fn_sb(s_b);
@@ -96,7 +118,6 @@ void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 				ft_putnbr(++cout);
 				ft_putstr("rrb\n");
 				fn_rrb(s_b);
-				// cmd[++i] = *ft_strdup("rrb\n");
 			}
 			else if (ft_check_a(s_a) == 1)
 			{
