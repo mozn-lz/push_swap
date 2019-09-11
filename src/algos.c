@@ -3,16 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   algos.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msefako <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mozn <mozn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 22:43:59 by msefako           #+#    #+#             */
-/*   Updated: 2019/09/09 22:44:04 by msefako          ###   ########.fr       */
+/*   Updated: 2019/09/11 02:50:33 by mozn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 	int cout = 0;	
+
+void	ft_sort100(t_stack_a *s_a, t_stack_b *s_b)
+{
+	/**
+	 * sort s_a,
+	 * push s_b
+	 * sort s_b
+	 * push s_a
+	*/
+ft_putstr("k5");
+	if (s_a->data[s_a->top] > s_a->data[0])
+		fn_rra(s_a);
+	if (s_a->data[s_a->top] < s_a->data[0])
+		fn_pb(s_a, s_b);
+	if (s_b->data[s_b->top] > s_b->data[0])
+		fn_rra(s_a);
+	if (s_b->data[s_b->top] > s_b->data[0])
+		fn_pa(s_a, s_b);
+}
 
 int		ft_check_a(t_stack_a *st_a)
 {
@@ -42,7 +61,7 @@ int		ft_check_b(t_stack_b *st_b)
 
 	i = 0;
 	if (st_b->top != -1)
-	{
+		{
 		i = st_b->top;
 		while(i >= 0)
 		{
@@ -65,10 +84,13 @@ int		ft_stack_checker(t_stack_a *st_a, t_stack_b *st_b)
 
 void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 {
-	if ((s_a->top > -1) && (ft_checker(s_a, s_b) == 0))
+	if (s_a->data[s_a->top] > 100)
+	{
+		ft_sort100(s_a, s_b);
+	} else if ((s_a->top > -1) && (ft_checker(s_a, s_b) == 0))
 	{
 		if (s_a->data[s_a->top - 1] > s_a->data[0] && s_a->data[s_a->top] < s_a->data[s_a->top - 1] && (s_a->top + s_b->top > 10))
-		{
+		{	// jkk
 			ft_putnbr(++cout);
 			ft_putstr("sa\n");
 			fn_sa(s_a);
@@ -97,13 +119,13 @@ void	algo2(t_stack_a *s_a, t_stack_b *s_b)
 
 		if (s_b->top > -1)
 		{
-			if (s_b->data[s_b->top - 1] < s_b->data[0] && s_b->data[s_b->top] > s_b->data[s_b->top - 1])
+			if (s_b->data[s_b->top - 1] < s_b->data[0] && s_b->data[s_b->top] > s_b->data[s_b->top - 1] && (s_a->top + s_b->top > 10))
 			{
 				ft_putnbr(++cout);
-				ft_putstr("sb\n");
+				ft_putstr("~sb\n");
 				fn_sb(s_b);
 				ft_putnbr(++cout);
-				ft_putstr("rb\n");
+				ft_putstr("~rb\n");
 				fn_rb(s_b);
 			}
 			if (s_b->data[s_b->top - 1] > s_b->data[s_b->top] && s_b->data[s_a->top] > 0)
